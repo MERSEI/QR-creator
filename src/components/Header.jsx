@@ -1,4 +1,4 @@
-import heroQr from "../assets/img/hero-qr.jpg";
+import heroQr from "../assets/img/hero-qr.png";
 
 function Header() {
   const scrollToContact = () => {
