@@ -21,7 +21,7 @@ A lightweight, fast QR code generator built with React and Vite. Generate QR cod
         - | React | UI framework |
         - | Vite | Build tool & dev server |
         - | JavaScript | Core logic |
-        - | CSS | Styling |
+        - | tailwind css|
        
         - ## 🚀 Getting Started
        
