@@ -4,7 +4,7 @@ A lightweight, fast QR code generator built with React and Vite. Generate QR cod
 
 ## 🌐 Demo
 
-🔗 **[Live Demo →](https://qr-creator-rouge.vercel.app)**
+🔗 **[Live Demo →]([https://qr-creator-production-2.up.railway.app/])**
 
 ## ✨ Features
 
