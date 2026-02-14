@@ -1,20 +1,26 @@
 {
   "name": "qr-creator",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "concurrently \"vite\" \"node server/index.js\"",
+    "dev:fe": "vite",
+    "dev:be": "node server/index.js",
     "build": "vite build",
+    "start": "node server/index.js",
     "preview": "vite preview"
   },
   "dependencies": {
-    "@formspree/react": "^3.0.0",
+    "cors": "^2.8.5",
+    "express": "^4.18.3",
+    "qrcode": "^1.5.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
     "@vitejs/plugin-react-swc": "^3.5.0",
+    "concurrently": "^8.2.2",
     "vite": "^5.2.0"
   }
 }
