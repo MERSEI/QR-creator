@@ -1,62 +1,158 @@
-# QR Creator 🔗
+# QR Creator — Design Agency Portfolio 🎨
 
-A lightweight, fast QR code generator built with React and Vite. Generate QR codes from any URL or text — instantly, with no backend required.
+Портфолио-сайт QR-дизайнера. Демонстрация примеров работ и форма для заявок на дизайн QR-кодов под бренд.
 
-## 🌐 Demo
+**[Live Demo →](https://qr-creator.vercel.app)** (Vercel Production)
 
-🔗 **[Live Demo →](https://qr-creator-rouge.vercel.app)**
+---
 
-## ✨ Features
+## ✨ О проекте
 
-- ⚡ Instant QR code generation — no page reload
-- - 📋 Input any URL or plain text
-  - - 💾 Download QR code as image
-    - - 📱 Responsive design, works on mobile
-      - - 🚫 No backend, runs entirely in the browser
-       
-        - ## 🛠️ Tech Stack
-       
-        - | Technology | Purpose |
-        - |---|---|
-        - | React | UI framework |
-        - | Vite | Build tool & dev server |
-        - | JavaScript | Core logic |
-        - | tailwind css|
-       
-        - ## 🚀 Getting Started
-       
-        - **Prerequisites:** Node.js 18+, npm or yarn
-       
-        - ```bash
-          git clone https://github.com/MERSEI/QR-creator.git
-          cd QR-creator
-          npm install
-          npm run dev
-          ```
+Это **версия 1** (архив) — B2B портфолио/лендинг для агентства, специализирующегося на дизайне QR-кодов.
 
-          Open http://localhost:5173 in your browser.
+**Функционал:**
+- 🎯 Одностраничный сайт с примерами работ
+- 📧 Контактная форма (интеграция с Formspree)
+- 🎨 Красивый тёмный дизайн с неоновым акцентом
+- 📱 Полностью responsive
+- ⚡ Быстрый статичный сайт (Vite)
 
-          **Build for production:**
+**Для новой версии с функционалом генерации QR-кодов и подписками** см. ветку `claude/qr-creator-backend-subscriptions`.
 
-          ```bash
-          npm run build
-          ```
+---
 
-          ## 📁 Project Structure
+## 🛠️ Tech Stack
 
-          ```
-          QR-creator/
-          ├── src/
-          │   ├── assets/       # Static assets
-          │   ├── components/   # React components
-          │   ├── App.jsx       # Root component
-          │   └── main.jsx      # Entry point
-          ├── dist/             # Production build
-          ├── index.html
-          ├── vite.config.js
-          └── package.json
-          ```
+- **React 18** — UI компоненты
+- **Vite** — build tool & dev server (SWC bundler)
+- **Formspree** — обработка контактной формы (бэкенд)
+- **Custom CSS** — дизайн-система без фреймворков (~450 строк)
+- **Node.js 18+** / npm
 
-          ## 📄 License
+---
 
-          MIT — see [LICENSE](LICENSE) for details.
+## 🚀 Локальное развертывание
+
+### Установка
+
+```bash
+git clone https://github.com/MERSEI/QR-creator.git
+cd QR-creator
+git checkout claude/qr-creator-v1
+
+npm install
+npm run dev
+```
+
+Откроется **http://localhost:5173** с горячей перезагрузкой.
+
+### Команды
+
+```bash
+npm run dev       # Запустить dev server (Vite)
+npm run build     # Собрать для production (→ dist/)
+npm run preview   # Превью production build локально
+```
+
+---
+
+## 📁 Структура проекта
+
+```
+QR-creator/
+├── src/
+│   ├── assets/
+│   │   ├── img/                    # Примеры работ (JPG/PNG)
+│   │   └── styles/main.css        # Дизайн-система (450 строк)
+│   ├── components/
+│   │   ├── Header.jsx              # Hero с value prop
+│   │   ├── Services.jsx            # 3 услуги
+│   │   ├── Examples.jsx            # Portfolio примеры
+│   │   ├── Process.jsx             # 4-шаговый процесс
+│   │   └── ContactForm.jsx         # Формсприс контактная форма
+│   ├── App.jsx                     # Root component
+│   └── main.jsx                    # Entry point
+├── dist/                           # Production build (после npm run build)
+├── index.html                      # HTML template
+├── vite.config.js                 # Vite конфиг
+├── package.json
+└── README.md
+```
+
+---
+
+## 🎨 Дизайн-система
+
+### Палитра
+- **Background**: `#0f1115` (тёмный ночной синий)
+- **Accent**: `#6bff9c` (неоновый лайм + glow)
+- **Text**: `#f5f5f5` (off-white)
+- **Muted**: `#a0a4b8` (серый вторичный текст)
+
+### Компоненты
+- **Кнопки**: Accent фон, скругленные (999px), с тенью
+- **Карточки**: Gradient фон, subtile border, box-shadow
+- **Формы**: Rounded inputs (999px), focus-state с accent border
+
+### Breakpoints
+- Desktop: полный макет
+- Tablet (900px): грид 2 колонны
+- Mobile (600px): грид 1 колонна, меньше padding
+
+---
+
+## 📧 Контактная форма
+
+Использует **Formspree** для обработки заявок:
+- Form ID: `xlgbwkgr`
+- Поля: Имя, Контакт, Тип задачи, Описание
+- Отправляет email автору + благодарственное сообщение пользователю
+
+Для своей формы замени ID в `src/components/ContactForm.jsx`.
+
+---
+
+## 🚢 Deployment на Vercel
+
+1. Перейди на **[vercel.com/new](https://vercel.com/new)**
+2. Подключи GitHub репозиторий `MERSEI/QR-creator`
+3. Ветка: **`claude/qr-creator-v1`**
+4. Framework preset: **Vite** (автоопределится)
+5. Build command: `npm run build`
+6. Output directory: `dist`
+
+Vercel развернёт сайт за ~1 минуту, выдав URL вида `https://qr-creator-xyz.vercel.app`.
+
+---
+
+## 📝 Разработка
+
+### Добавление новой страницы/компонента
+
+1. Создай новый компонент в `src/components/`
+2. Экспортируй его в `src/App.jsx`
+3. Добавь CSS классы в `src/assets/styles/main.css` (используй дизайн-токены через `:root`)
+
+### Изменение контактной формы
+
+Отредактируй `src/components/ContactForm.jsx`:
+- Замени Formspree ID на свой
+- Добавь/удали поля в форме
+- Стили в `main.css` (классы `.contact-*`, `.form-*`, `.input`, `.textarea`)
+
+---
+
+## 🔗 Переходные ссылки
+
+- **Новая версия** (SaaS QR-генератор): [`claude/qr-creator-backend-subscriptions`](https://github.com/MERSEI/QR-creator/tree/claude/qr-creator-backend-subscriptions)
+- **Основной репозиторий**: https://github.com/MERSEI/QR-creator
+
+---
+
+## 📄 License
+
+MIT — see [LICENSE](LICENSE) for details.
+
+---
+
+**Ветка** `claude/qr-creator-v1` — статичный портфолио-сайт (v1). Для полнофункционального SaaS с генерацией QR и подписками см. `claude/qr-creator-backend-subscriptions`.
