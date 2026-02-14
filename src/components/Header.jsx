@@ -1,56 +1,49 @@
-import heroQr from "../assets/img/hero-qr.png";
+export default function Header({ userStatus, loading, onUpgrade }) {
+  const plan = userStatus?.plan;
+  const credits = userStatus?.credits ?? 0;
+  const freeRemaining = userStatus?.freeRemaining ?? 0;
 
-function Header() {
-  const scrollToContact = () => {
-    const el = document.getElementById("contact");
-    if (el) el.scrollIntoView({ behavior: "smooth" });
-  };
+  function PlanBadge() {
+    if (loading) {
+      return <span className="plan-badge plan-badge--loading">•••</span>;
+    }
+    if (plan === "unlimited") {
+      return <span className="plan-badge plan-badge--pro">Безлимит</span>;
+    }
+    if (credits > 0) {
+      return (
+        <span className="plan-badge plan-badge--credits">
+          {credits} QR-{credits === 1 ? "кредит" : "кредита"}
+        </span>
+      );
+    }
+    if (freeRemaining > 0) {
+      return <span className="plan-badge plan-badge--free">1 бесплатный QR</span>;
+    }
+    return (
+      <button className="plan-badge plan-badge--limit" onClick={onUpgrade}>
+        Лимит — Выбрать план ↗
+      </button>
+    );
+  }
 
   return (
-    <header className="hero">
-      <div className="container hero-inner">
-        <div className="hero-left">
-          <div className="hero-kicker">
-            <span className="hero-kicker-dot" />
-            <span>Дизайнерские QR‑коды под ваш бренд</span>
-          </div>
+    <header className="site-header">
+      <div className="container header-inner">
+        <div className="header-logo">
+          <span className="logo-glyph">◼</span>
+          <span className="logo-text">QR Creator</span>
+        </div>
 
-          <h1 className="hero-title">
-            Делаю аккуратные QR‑коды, которые не стыдно ставить на дизайн.
-          </h1>
-
-          <p className="hero-text">
-            Оформлю или переработаю ваш QR: визитки, упаковка, афиши, digital.
-            Красиво, в стиле бренда и без потери сканируемости.
-          </p>
-
-          <div className="hero-cta-row">
-            <button className="btn" type="button" onClick={scrollToContact}>
-              Оставить заявку
+        <nav className="header-nav">
+          <PlanBadge />
+          {plan !== "unlimited" && !loading && (
+            <button className="btn btn--sm" onClick={onUpgrade}>
+              Улучшить план
             </button>
-            <p className="hero-note">
-              Отвечу лично в течение дня. Связаться можно будет в Telegram,
-              WhatsApp или по e‑mail.
-            </p>
-          </div>
-        </div>
-
-        <div className="hero-right">
-          <div className="hero-card">
-            <div className="hero-card-inner">
-              <div className="hero-qr-wrap">
-                <img src={heroQr} alt="Пример дизайнерского QR‑кода" />
-              </div>
-              <p className="hero-card-caption">
-                Пример живого QR‑кода в стиле лендинга. Такой же аккуратный код
-                могу собрать под ваши задачи.
-              </p>
-            </div>
-          </div>
-        </div>
+          )}
+        </nav>
       </div>
     </header>
   );
 }
-
-export default Header;
